@@ -4,29 +4,43 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Demo1.Data.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 
 namespace Demo1
 {
     public class App : Application
     {
+		static ViewModelLocator _locator;
+		static NavigationService nav;
+		static NavigationPage _navPage;
+
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-                }
-            };
+			MainPage = GetMainPage();
+            
         }
 
+		public static Page GetMainPage(){
+		
+			nav = new NavigationService ();
+			nav.Configure (ViewModelLocator.MainPageKey, typeof(MainPage));
+
+			SimpleIoc.Default.Register<INavigationService> (() => nav, true);
+
+			_navPage = new NavigationPage (new MainPage());
+			nav.Initialize (_navPage);
+			return _navPage;
+		}
+		public static ViewModelLocator Locator
+		{
+			get
+			{
+				return _locator ?? (_locator = new ViewModelLocator ());
+			}
+		}
         protected override void OnStart()
         {
             // Handle when your app starts

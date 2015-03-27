@@ -15,6 +15,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using GalaSoft.MvvmLight.Views;
 
 namespace Demo1.Data.ViewModel
 {
@@ -24,6 +25,7 @@ namespace Demo1.Data.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+		public const string MainPageKey = "MainPage";
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -42,16 +44,19 @@ namespace Demo1.Data.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+
+			var nav = SimpleIoc.Default.GetInstance<INavigationService> ();
+			SimpleIoc.Default.Register<MainViewModel>(() => new MainViewModel (nav));
+			SimpleIoc.Default.Register<NewPersonViewModel>(() => new NewPersonViewModel (nav));
         }
 
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
+		public MainViewModel Main
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<MainViewModel>();
+			}
+		}
         
         public static void Cleanup()
         {
