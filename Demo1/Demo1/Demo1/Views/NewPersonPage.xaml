@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Demo1.NewPersonPage">
 	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+
+			<Entry Grid.Row = "0" Placeholder="Name" Text = "{Binding Name, Mode=OneWayToSource}"/>
+			<Entry Grid.Row = "1" Placeholder="Phone Number" Text = "{Binding Number, Mode=OneWayToSource}"/>
+			<Entry Grid.Row = "2" Placeholder="Address" Text = "{Binding Address, Mode=OneWayToSource}"/>
+			<Button Grid.Row = "3" Text = "Add Person" Clicked = "OnAddPerson_Clicked"/> 
+		</Grid>
 	</ContentPage.Content>
 </ContentPage>

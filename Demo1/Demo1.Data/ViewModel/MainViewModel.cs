@@ -1,5 +1,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using Xamarin.Forms;
 
 namespace Demo1.Data.ViewModel
 {
@@ -19,6 +20,7 @@ namespace Demo1.Data.ViewModel
     {
 		public const string NamePropertyName = "Name";
 
+		private Command NewPersonCommand;
 
 		private string name;
 
@@ -37,7 +39,7 @@ namespace Demo1.Data.ViewModel
 			}
 		}
 
-		private INavigationService _navigationService;
+		public INavigationService _navigationService;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -45,6 +47,9 @@ namespace Demo1.Data.ViewModel
         {
 			_navigationService = navigationService;
            
+
+			NewPersonCommand = new Command(() =>
+				_navigationService.NavigateTo (ViewModelLocator.NewPersonKey));
         }
     }
 }

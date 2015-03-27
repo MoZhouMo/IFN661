@@ -26,6 +26,7 @@ namespace Demo1.Data.ViewModel
     public class ViewModelLocator
     {
 		public const string MainPageKey = "MainPage";
+		public const string NewPersonKey = "NewPersonPage";
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -55,6 +56,14 @@ namespace Demo1.Data.ViewModel
 			get
 			{
 				return ServiceLocator.Current.GetInstance<MainViewModel>();
+			}
+		}
+
+		public NewPersonViewModel NewPerson 
+		{
+			get
+			{ 
+				return ServiceLocator.Current.GetInstance<NewPersonViewModel> ();
 			}
 		}
         
