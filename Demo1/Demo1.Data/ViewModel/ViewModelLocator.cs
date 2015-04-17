@@ -27,6 +27,7 @@ namespace Demo1.Data.ViewModel
     {
 		public const string MainPageKey = "MainPage";
 		public const string NewPersonKey = "NewPersonPage";
+		public const string SettingsKey = "SettingsPage";
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -49,6 +50,7 @@ namespace Demo1.Data.ViewModel
 			var nav = SimpleIoc.Default.GetInstance<INavigationService> ();
 			SimpleIoc.Default.Register<MainViewModel>(() => new MainViewModel (nav));
 			SimpleIoc.Default.Register<NewPersonViewModel>(() => new NewPersonViewModel (nav));
+			SimpleIoc.Default.Register<SettingsViewModel> (() => new SettingsViewModel (nav));
         }
 
 		public MainViewModel Main
@@ -64,6 +66,14 @@ namespace Demo1.Data.ViewModel
 			get
 			{ 
 				return ServiceLocator.Current.GetInstance<NewPersonViewModel> ();
+			}
+		}
+
+		public SettingsViewModel Settings
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<SettingsViewModel> ();
 			}
 		}
         

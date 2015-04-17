@@ -28,7 +28,7 @@ namespace Demo1
 			nav = new NavigationService ();
 			nav.Configure (ViewModelLocator.MainPageKey, typeof(MainPage));
 			nav.Configure (ViewModelLocator.NewPersonKey, typeof(NewPersonPage));
-
+			nav.Configure (ViewModelLocator.SettingsKey, typeof(SettingsPage));
 			SimpleIoc.Default.Register<INavigationService> (() => nav, true);
 
 			_navPage = new NavigationPage (new MainPage());

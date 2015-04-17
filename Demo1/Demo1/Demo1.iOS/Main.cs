@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using GalaSoft.MvvmLight.Ioc;
+using Demo1.Data;
 
 namespace Demo1.iOS
 {
@@ -14,6 +16,8 @@ namespace Demo1.iOS
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
+			SimpleIoc.Default.Register<ISqlite>(() => SQLite_iOS.SQLite);
+
             UIApplication.Main(args, null, "AppDelegate");
         }
     }

@@ -9,10 +9,12 @@ x:Class="Demo1.MainPage">
 				<RowDefinition Height = "1*"/>
 				<RowDefinition Height = "1*"/>
 				<RowDefinition Height = "1*"/>
+				<RowDefinition Height = "1*"/>
 			</Grid.RowDefinitions>
-			<Label Grid.Row = "0" Text = "Hello Xamarin World"/>
-				<Button Grid.Row = "1" Text = "Add a Person" Clicked = "OnNewPerson_Clicked"/>
-			<Button Grid.Row = "2" Text = "See the list of People" Command="{Binding PeopleListCommand}"/>
+			<Label Grid.Row = "0" Text = "{Binding WelcomeText}"/>
+			<Button Grid.Row = "1" Text = "Add a Person" Clicked = "OnNewPerson_Clicked"/>
+			<Button Grid.Row = "2" Text = "Person List" Clicked = "OnPersonList_Clicked"/>
+			<Button Grid.Row = "3" Text = "Settings" Clicked = "OnSettings_Clicked"/>
 		</Grid>
 	</ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using GalaSoft.MvvmLight.Command;
 
 namespace Demo1.Data.ViewModel
 {
@@ -18,9 +19,26 @@ namespace Demo1.Data.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+		private KeyPairDatabase database = new KeyPairDatabase();
 		public const string NamePropertyName = "Name";
 
-		private Command NewPersonCommand;
+		public Command NewPersonCommand;
+		public Command SettingsCommand;
+
+		private string welcomeText;
+
+		public string WelcomeText { 
+			get { return welcomeText; } 
+			set{
+				if (welcomeText == value) {
+					return;
+				}	
+				if (value != null) {
+					welcomeText = value;
+					RaisePropertyChanged("WelcomeText");
+				}
+			}
+		}
 
 		private string name;
 
@@ -46,10 +64,14 @@ namespace Demo1.Data.ViewModel
         public MainViewModel(INavigationService navigationService)
         {
 			_navigationService = navigationService;
-           
 
-			NewPersonCommand = new Command(() =>
-				_navigationService.NavigateTo (ViewModelLocator.NewPersonKey));
+		
+			
+			SettingsCommand = new Command (() =>{
+				_navigationService.NavigateTo (ViewModelLocator.SettingsKey);});
+				
         }
+
+
     }
 }

@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using GalaSoft.MvvmLight.Ioc;
+using Demo1.Data;
 
 namespace Demo1.Droid
 {
@@ -15,6 +17,7 @@ namespace Demo1.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+			SimpleIoc.Default.Register<ISqlite>(() => SQLite_Android.SQLite);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
