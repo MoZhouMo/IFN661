@@ -44,6 +44,9 @@
     <Compile Include="Database\KeyPairDatabase.cs" />
     <Compile Include="Models\KeyPairModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Database\PersonDatabase.cs" />
+    <Compile Include="ViewModel\PersonListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">

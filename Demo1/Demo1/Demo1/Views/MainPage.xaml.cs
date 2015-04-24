@@ -35,7 +35,7 @@ namespace Demo1
 		}
 
 		void OnPersonList_Clicked(object sender, EventArgs args){
-			DisplayAlert ("Hands on!", "Its time for a hands on Demo!", "Cool!");
+			Navigation.PushAsync(new PersonListPage());
 		}
 
 

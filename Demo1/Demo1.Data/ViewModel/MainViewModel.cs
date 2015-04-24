@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
+using System.ComponentModel;
 
 namespace Demo1.Data.ViewModel
 {
@@ -17,7 +18,7 @@ namespace Demo1.Data.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {
 		private KeyPairDatabase database = new KeyPairDatabase();
 		public const string NamePropertyName = "Name";

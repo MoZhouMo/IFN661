@@ -23,9 +23,18 @@ namespace Demo1
 			BindingContext = App.Locator.NewPerson;
 		}
 
-		void OnAddPerson_Clicked(object sender, EventArgs args)
+		async void OnAddPerson_Clicked(object sender, EventArgs args)
 		{
-			DisplayAlert ("Hands on!", "Its time for a hands on Demo!", "Cool!");
+			var database = new PersonDatabase ();
+
+			var person = new PersonModel (Vm.Name, Vm.Number, Vm.Address);
+
+			var insertedNumber = database.InsertItem (person);
+
+			await DisplayAlert ("Success", String.Format ("{0} persons added", insertedNumber), "Cool");
+
+			Navigation.PopAsync ();
+
 		}
 	}
 }
