@@ -25,7 +25,7 @@ namespace Demo1
 
 		void OnAddPerson_Clicked(object sender, EventArgs args)
 		{
-			Debug.WriteLine(String.Format("Name = {0} Phone Number = {1} Address = {2}",Vm.Name,Vm.Number,Vm.Address));
+			DisplayAlert ("Hands on!", "Its time for a hands on Demo!", "Cool!");
 		}
 	}
 }

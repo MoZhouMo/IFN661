@@ -23,7 +23,6 @@ namespace Demo1
 		{
 			BindingContext = App.Locator.Main;
 			InitializeComponent ();
-
 		}
 
 		void OnNewPerson_Clicked(object sender, EventArgs args)
